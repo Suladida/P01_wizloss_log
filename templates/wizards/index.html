@@ -4,4 +4,13 @@
 
 This is where all of our wizards will appear
 
+<h1>Total Wizards:</h1>
+        {% for wizard in wizards %}
+        <div>
+          <p>
+            {{ wizard.first_name }} {{ wizard.last_name }}: {{wizard.age}}</b>
+          </p>
+        </div>
+        {% endfor %}
+
 {% endblock content %}
