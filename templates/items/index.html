@@ -2,12 +2,12 @@
 
 {% block content %}
 
-This is where all of our items will appear!
-
-<h1>Wizard Members:</h1>
+<h1>Total Items:</h1>
         {% for item in items %}
         <div>
-          <p>
+          <p><b>{{item.wizard.first_name}} {{item.wizard.last_name}}</b>
+            <br>
+            <a href="/items/{{item.id}}">Edit</a>
             {{ item.type }} {{ item.colour}} {{item.style}} {{item.wizard}}</b>
           </p>
         </div>

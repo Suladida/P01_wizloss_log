@@ -45,9 +45,6 @@ loss3 = Loss("07","07","2019", "Woke up without it on the bus this morning", wiz
 loss_repo.save(loss3)
 loss4 = Loss("03", "07", "2019", "No memory of loss", wizard1, shoes1)
 loss_repo.save(loss4)
-# loss5 = Loss("", "", "", "", "", "")
-# loss6 = Loss("", "", "", "", "", "")
-# loss7 = Loss("", "", "", "", "", "")
 
 wizards = wiz_repo.select_all()
 items = item_repo.select_all()
