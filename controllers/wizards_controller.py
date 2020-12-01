@@ -2,8 +2,10 @@ from flask import Flask, redirect, render_template, Blueprint
 from app import app
 
 @app.route('/')
-def index():
-    return "Hello, World!"
+def home():
+    return render_template('index.html')
+# def index():
+#     return "Hello, World!"
 
 
 
