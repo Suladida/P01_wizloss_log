@@ -4,7 +4,7 @@ import repositories.wizard_repository as wiz_repo
 
 wizards_blueprint = Blueprint('wizards', __name__)
 
-@wizards_blueprint.route('/')
+@wizards_blueprint.route('/', methods=['GET'])
 def home():
     wizards = wiz_repo.select_all()
     return render_template('wizards/wizards.html', title = 'Home', wizards=wizards)
@@ -33,21 +33,19 @@ def show_wizard(id):
     wizard = wiz_repo.select(id)
     return render_template('wizards/show.html', wizard = wizard)
 
+# EDIT: GET 'wizards/<id>/edit'
+@wizards_blueprint.route("/wizards/<id>/edit", methods=['GET'])
+def edit_wizard(id):
+    wizard = wiz_repo.select(id)
+    return render_template('wizards/edit.html', wizard = wizard)
 
 
-
-# @wizards_blueprint.route("/wizards/<id>", methods=['GET'])
-# def show_wizard(id):
-#     wizard = wiz_repo.select(id)
-#     return render_template('books/show.html', wizard = wizard)
-
-
-# @wizards_blueprint.route('/show', methods=['POST', 'GET'])
-# def edit_wizard():
-#     wizFirstName = request.form['first_name']
-#     wizLastName = request.form['last_name']
-#     wizAge = request.form['age']
-#     newWizard = Wizard(first_name = wizFirstName, last_name = wizLastName, age = wizAge)
-#     wiz_repo.update(newWizard)
-#     wizards = wiz_repo.select_all()
-#     return render_template('wizards/show.html', title='Home', wizards=wizards)
+@wizards_blueprint.route('/wizards/<id>', methods=['POST'])
+def update_wizard(id):
+    wizFirstName = request.form['first_name']
+    wizLastName = request.form['last_name']
+    wizAge = request.form['age']
+    newWizard = Wizard(first_name = wizFirstName, last_name = wizLastName, age = wizAge, id=id)
+    wiz_repo.update(newWizard)
+    wizards = wiz_repo.select_all()
+    return render_template('wizards/wizards.html', title='Home', wizards=wizards)
