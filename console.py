@@ -53,4 +53,14 @@ wizards = wiz_repo.select_all()
 items = item_repo.select_all()
 losses = loss_repo.select_all()
 
+# Test Update Wizard Here (Change Age)
+wizard_update = Wizard("Gandalferoo", "DePurple", 3000, wizard1.id)
+wiz_repo.update(wizard_update)
+
+# Test Update Item Here (Change Colour)
+
+# Test Update Loss Here (Change Recovered)
+
+
+
 pdb.set_trace()
