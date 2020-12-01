@@ -1,9 +1,11 @@
 class Loss:
     
-    def __init__(self, date, details, wizard_id, item_id, recovered = False, id = None):
-        self.date = date
+    def __init__(self, day, month, year, details, wizard, item, recovered = False, id = None):
+        self.day = day
+        self.month = month
+        self.year = year
         self.details = details
-        self.wizard_id = wizard_id
-        self.item_id = item_id
+        self.wizard = wizard
+        self.item = item
         self.recovered = recovered
         self.id = id
