@@ -4,10 +4,6 @@ import repositories.item_repository as item_repo
 from models.wizard import Wizard
 import repositories.wizard_repository as wiz_repo
 
-# (type, colour, style, wizard_id) VALUES (%s, %s, %s, %s)
-# wizard = wiz_repo.select(row['wizard_id'])
-# item = Item(result['type'], result['colour'], result['style'], wizard, result['id'] )
-
 # CREATE:
 # save function goes here
 def save(item):
