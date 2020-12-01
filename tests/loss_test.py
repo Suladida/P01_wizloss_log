@@ -11,7 +11,7 @@ class TestLoss(unittest.TestCase):
     def setUp(self):
         wizard = Wizard("Norman", "Stargazer", 1000)
         item = Item("Hat", "Pink", "Glittery", wizard)
-        self.loss = Loss(2020-2-2, "Lost at event at Gimli's Nightclub", wizard, item)
+        self.loss = Loss("02", "02", "2000", "Lost at event at Gimli's Nightclub", wizard, item)
 
     # @unittest.skip("Delete this line to run the test")
     def test_loss_has_details(self):
