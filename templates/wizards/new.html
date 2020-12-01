@@ -2,7 +2,7 @@
 
 {% block content %}
 
-This is where our create wizard form will appear
+<h1>Add New Wizard:</h1>
 
 <form action="/wizards" method="post">
     <label for="first_name">First Name</label>
@@ -13,14 +13,5 @@ This is where our create wizard form will appear
     <input type="number" name="age" id="age">
     <input type="submit" value="Add Wizard">
   </form>
-
-{% for wizard in wizards %}
-    <div>
-        <p>
-        {{ wizard.first_name }} {{ wizard.last_name }}</b>
-        </p>
-    </div>
-    {% endfor %}
-
 
 {% endblock content %}

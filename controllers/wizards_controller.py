@@ -3,6 +3,7 @@ from app import app
 from models.wizard import Wizard
 import repositories.wizard_repository as wiz_repo
 
+
 @app.route('/')
 def home():
     wizards = wiz_repo.select_all()
@@ -15,6 +16,10 @@ def home():
 @app.route('/new')
 def new():
     return render_template('wizards/new.html')
+
+@app.route('/edit')
+def edit():
+    return render_template('wizards/edit.html')
 
 @app.route('/wizards', methods=['POST', 'GET'])
 def add_wizard():
