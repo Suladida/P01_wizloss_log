@@ -5,15 +5,26 @@
 
 <!-- CREATE DROP-DOWN FOR WIZARD NAME -->
 
-<form action="/wizards" method="post">
+<form action="/wizards/{{wizard.id}}" method="post">
     <label for="first_name">First Name</label>
-    <input type="text" name="first_name" id="first_name">
+    <input type="text" name="first_name" id="first_name" value="{{wizard.first_name}}" required autofocus>
     <label for="last_name">Last Name</label>
-    <input type="text" name="last_name" id="last_name">
+    <input type="text" name="last_name" id="last_name" value="{{wizard.last_name}}" required>
     <label for="age">Age</label>
-    <input type="number" name="age" id="age">
+    <input type="number" name="age" id="age" value="{{wizard.age}}" required>
     <input type="submit" value="Update">
   </form>
 
 {% endblock content %}
-
+<!-- 
+<div>
+  <label for="author">Author:</label>
+  <select id="author" name="author_id">
+    {% for author in all_authors %}
+      <option value="{{ author.id }}"
+        {% if book.author.id == author.id %} selected="selected"{% endif %}>
+        {{ author.full_name() }}
+      </option>
+    {% endfor %}
+  </select>
+</div> -->
