@@ -4,13 +4,7 @@ from app import app
 @app.route('/')
 def home():
     return render_template('index.html')
-# def index():
-#     return "Hello, World!"
 
-
-
-# wizards_blueprint = Blueprint("wizards", __name__)
-
-# @wizards_blueprint.route("/wizards")
-# def tasks():
-#     return render_template("wizards/index.html")
+@app.route('/<name>') 
+def greet(name): 
+    return f"Hello {name}!"
