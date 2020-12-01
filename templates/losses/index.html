@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+This is where all of the current losses will appear!
+
+<h1>Current Losses:</h1>
+        {% for loss in losses %}
+        <div>
+          <p>
+            {{ loss.day }} {{loss.month}} {{loss.year}} {{loss.details}} {{loss.wizard_id}} {{loss.item_id}} {{ loss.recovered }}</b>
+          </p>
+        </div>
+        {% endfor %}
+
+{% endblock content %}

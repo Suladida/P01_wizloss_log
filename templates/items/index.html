@@ -2,13 +2,13 @@
 
 {% block content %}
 
-This is where all of our wizards will appear!
+This is where all of our items will appear!
 
 <h1>Wizard Members:</h1>
-        {% for wizard in wizards %}
+        {% for item in items %}
         <div>
           <p>
-            {{ wizard.first_name }} {{ wizard.last_name }}</b>
+            {{ item.type }} {{ item.colour}} {{item.style}} {{item.wizard}}</b>
           </p>
         </div>
         {% endfor %}
