@@ -2,6 +2,9 @@ import pdb
 from models.wizard import Wizard
 from models.item import Item
 from models.loss import Loss
+import repositories.item_repository as item_repo
+import repositories.wizard_repository as wiz_repo
+import repositories.loss_repository as loss_repo
 
 wizard1 = Wizard("Gandalferoo", "Frillywhiskers", 2000)
 wizard2 = Wizard("Merlin", "Magicpants", 1000)
