@@ -11,5 +11,7 @@ This is where our individual wizard profile will appear!
     <b>Age:</b> {{wizard.age}}
 </div>
 <p><a href="/wizards/{{wizard.id}}/edit">Edit</a></p>
+<form action="/wizards/{{ wizard.id }}/delete" method="POST">
+    <input type="submit" value="Delete">
 
 {% endblock content %}

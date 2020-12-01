@@ -49,3 +49,11 @@ def update_wizard(id):
     wiz_repo.update(newWizard)
     wizards = wiz_repo.select_all()
     return render_template('wizards/wizards.html', title='Home', wizards=wizards)
+
+@wizards_blueprint.route('/wizards/<id>/delete', methods=["POST"])
+def delete_wizard(id):
+    wiz_repo.delete(id)
+    wizards = wiz_repo.select_all()
+    return render_template('wizards/wizards.html', title='Home', wizards=wizards)
+
+    # Requires cascade delete on tables?

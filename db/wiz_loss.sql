@@ -15,7 +15,7 @@ CREATE TABLE items (
     type VARCHAR(255),
     colour VARCHAR(255),
     style VARCHAR(255),
-    wizard_id INT REFERENCES wizards(id)
+    wizard_id INT REFERENCES wizards(id) ON DELETE CASCADE
 );
 
 CREATE TABLE losses (
@@ -24,7 +24,7 @@ CREATE TABLE losses (
     month INT,
     year INT,
     details VARCHAR(255),
-    wizard_id INT REFERENCES wizards(id),
-    item_id INT REFERENCES items(id),
+    wizard_id INT REFERENCES wizards(id) ON DELETE CASCADE,
+    item_id INT REFERENCES items(id) ON DELETE CASCADE,
     recovered BOOLEAN 
 );
