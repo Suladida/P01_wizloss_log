@@ -52,7 +52,7 @@ def update(loss):
     sql = "UPDATE casts SET (day, month, year, details, wizard_id, item_id, recovered) = (%s, %s, %s, %s, %s, %s, %s) WHERE id = %s"
     values = [loss.day, loss.month, loss.year, loss.details, loss.wizard.id, loss.item.id, loss.recovered]
     run_sql(sql, values)
-    print(f"✅ Cast Updated: {loss.date} {loss.details} {loss.wizard.id} {loss.item.id} {loss.recovered}")
+    print(f"✅ Cast Updated: {loss.day} {loss.month} {loss.year} {loss.details} {loss.wizard.id} {loss.item.id} {loss.recovered}")
 
 # DELETE:
 # - delete function goes here

@@ -39,7 +39,7 @@ item_repo.save(wand3)
 # day, month, year, details, wizard_id, item_id, recovered
 loss1 = Loss("01","01","2020", "Lost at event at Gimli's Nightclub", wizard1, hat1)
 loss_repo.save(loss1)
-loss2 = Loss("04","03","2019", "Lost in forest (name unknown)", wizard2, hat2)
+loss2 = Loss("04","03","2019", "Lost in forest (forest name unknown)", wizard2, hat2)
 loss_repo.save(loss2)
 loss3 = Loss("07","07","2019", "Woke up without it on the bus this morning", wizard3, wand3)
 loss_repo.save(loss3)
@@ -63,6 +63,8 @@ item_repo.update(wand_update)
 
 
 # Test Update Loss Here (Change Recovered)
+loss2 = Loss("04","03","2019", "Lost in forest (forest name unknown)", wizard2, hat2, True)
+loss_repo.update(loss2)
 
 
 
