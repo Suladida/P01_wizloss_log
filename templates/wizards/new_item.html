@@ -2,8 +2,6 @@
 
 {% block content %}
 
-This is where our create item form will appear
-
 <form action="/items" method="post">
     <label for="type">Type:</label>
     <input type="text" name="type" id="type">
@@ -11,14 +9,15 @@ This is where our create item form will appear
     <input type="text" name="colour" id="colour">
     <label for="style">Style:</label>
     <input type="text" name="style" id="style">
-    <label for="wizard">Wizard:</label>
-        <select name="wizard_id" id="wizard">
-            {% for wizard in wizards %}
+
+    <!-- <label for="wizard_id">Wizard:</label>
+        <select name="wizard_id" id="wizard_id">
+        {% for wizard in wizards %}
             <option value="{{ wizard.id }}">
-                {{wizard.last_name}}
+                {{wizard.first_name}}
             </option>
-            {% endfor %}
-            </select>
+        {% endfor %} -->
+        </select>
     <input type="submit" value="Add Item">
   </form>
 

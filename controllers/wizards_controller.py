@@ -39,7 +39,6 @@ def edit_wizard(id):
     wizard = wiz_repo.select(id)
     return render_template('wizards/edit.html', wizard = wizard)
 
-
 @wizards_blueprint.route('/wizards/<id>', methods=['POST'])
 def update_wizard(id):
     wizFirstName = request.form['first_name']
@@ -56,4 +55,17 @@ def delete_wizard(id):
     wizards = wiz_repo.select_all()
     return render_template('wizards/wizards.html', title='Home', wizards=wizards)
 
-    # Requires cascade delete on tables?
+# SHOW: GET 'wizards/<id>/items'
+@wizards_blueprint.route('/wizards/<id>/items', methods=["GET"])
+def view_wizard_items(id):
+    wizard = wiz_repo.select(id)
+    items = wiz_repo.select_all()
+    return render_template('items/items.html', title='Home', wizard = wizard, items = items)
+
+@wizards_blueprint.route("/wizards/<id>/new_item", methods=['GET'])
+def new_item(id):
+    wizard = wiz_repo.select(id)
+    # wizard_id = wizard.id
+    return render_template('wizards/new_item.html', wizard = wizard)
+
+# "wizards/{{wizard.id}}/items"

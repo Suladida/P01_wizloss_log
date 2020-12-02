@@ -5,10 +5,9 @@
 <h1>Total Items:</h1>
     {% for item in items %}
     <div>
-      <p><b>{{item.wizard.first_name}} {{item.wizard.last_name}}</b>
         <br>
-        <a href="/items/{{item.id}}/edit">Edit</a>
         {{ item.type }} {{ item.colour}} {{item.style}} {{item.wizard}}</b>
+        <a href="/items/{{item.id}}/edit">Edit</a>
       </p>
     </div>
     {% endfor %}
