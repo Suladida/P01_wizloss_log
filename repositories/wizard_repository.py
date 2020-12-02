@@ -29,7 +29,6 @@ def select_all():
 # READ:
 # select function goes here
 def select(id):
-    print(f"⛰⛰⛰⛰⛰⛰{id}")
     wizard = None
     sql = "SELECT * FROM wizards WHERE id = %s"
     values = [id]
@@ -45,7 +44,6 @@ def update(wizard):
     sql = "UPDATE wizards SET (first_name, last_name, age) = (%s, %s, %s) WHERE id = %s"
     values = [wizard.first_name, wizard.last_name, wizard.age, wizard.id]
     run_sql(sql, values)
-    print(f"✅ Wizard Updated: {wizard.id} {wizard.first_name} {wizard.last_name} {wizard.age}")
 
 # DELETE:
 # - delete function goes here

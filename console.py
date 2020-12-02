@@ -55,14 +55,14 @@ wizard1.age = 50000
 wiz_repo.update(wizard1)
 
 # Check colour before
-print(f"🧪🧪🧪{wand1.colour}")
+print(f"🧪{wand1.colour}")
 # say what the item is
 # say what the updates are
 wand1.colour = "Medium Brown"
 # pass both to function 
 item_repo.update(wand1)
 # Check colour after
-print(f"🧪🧪🧪{wand1.colour}")
+print(f"🧪{wand1.colour}")
 
 loss_repo.check_item_status(hat2)
 
@@ -73,13 +73,9 @@ loss_repo.update(loss2)
 item_repo.view_all_items(wizard2)
 loss_repo.active_losses()
 
-# item_repo.check_wizard_owns_item(wizard1, hat1)
 loss_repo.current_losses(wizard1)
 loss_repo.loss_history(wizard2)
-# loss_repo.mark_item_recovered(loss1)
 loss_repo.check_item_status(hat2)
 
 
 pdb.set_trace()
-
-#BRANCH TEST
