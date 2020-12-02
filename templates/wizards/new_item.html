@@ -1,6 +1,7 @@
 {% extends "base.html" %}
 
 {% block content %}
+<h1>Add New Item:</h1>
 
 <form action="/items" method="post">
     <label for="type">Type:</label>
@@ -10,15 +11,6 @@
     <label for="style">Style:</label>
     <input type="text" name="style" id="style">
     <input hidden type="text" name="wizard_id" value ="{{wizard.id}}">
-
-    <!-- <label for="wizard_id">Wizard:</label>
-        <select name="wizard_id" id="wizard_id">
-        {% for wizard in wizards %}
-            <option value="{{ wizard.id }}">
-                {{wizard.first_name}}
-            </option>
-        {% endfor %} -->
-        </select>
     <input type="submit" value="Add Item">
   </form>
 

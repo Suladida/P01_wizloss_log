@@ -2,14 +2,13 @@
 
 {% block content %}
 
-This is where all of our wizards will appear!
-
-<h1>Wizard Members:</h1>
+<h1>Wiz Loss Members:</h1>
+<a href="/new">New Wizard</a><br><br>
         {% for wizard in wizards %}
         <div>
           <p>
-            <a href="/wizards/{{wizard.id}}">Edit {{wizard.first_name}}</a>
-            {{ wizard.first_name }} {{ wizard.last_name }} {{wizard.age}} </b>
+            <a href="/wizards/{{wizard.id}}">Edit</a>
+            <u>Name</u>: {{ wizard.first_name }} {{ wizard.last_name }} <u>Age</u>: {{wizard.age}} </b>
           </p>
         </div>
         {% endfor %}
