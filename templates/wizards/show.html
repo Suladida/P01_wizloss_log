@@ -9,12 +9,10 @@
 <div>
     <b>Age:</b> {{wizard.age}}
 </div>
-<p><a href="/wizards/{{wizard.id}}/edit">Edit</a></p>
+<p><a href="/wizards/{{wizard.id}}/edit">Edit Wizard</a></p>
 <form action="/wizards/{{ wizard.id }}/delete" method="POST">
     <input type="submit" value="Delete"></form>
-    
-    <a href="{{wizard.id}}/items">View Items</a>
-    <a href="{{wizard.id}}/new_item">New Item</a>
+    <a href="{{wizard.id}}/new_item">Add Item</a>
 
     
     {% endblock content %}

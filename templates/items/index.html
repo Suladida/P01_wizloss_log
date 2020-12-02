@@ -7,8 +7,9 @@
     <div>
       <p><b>{{item.wizard.first_name}} {{item.wizard.last_name}}</b>
         <br>
-        <a href="/items/{{item.id}}/edit">Edit</a>
-        {{ item.type }} {{ item.colour}} {{item.style}} {{item.wizard.first_name}}</b>
+        <a href="/items/{{item.id}}/edit">Edit</a><br>
+        {{ item.type }} - {{ item.colour}}<br>
+        {{item.style}}
       </p>
     </div>
     {% endfor %}

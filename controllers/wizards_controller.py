@@ -67,5 +67,3 @@ def new_item(id):
     wizard = wiz_repo.select(id)
     # wizard_id = wizard.id
     return render_template('wizards/new_item.html', wizard = wizard)
-
-# "wizards/{{wizard.id}}/items"
