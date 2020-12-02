@@ -144,33 +144,29 @@ def current_losses(wizard):
         item = item_repo.select(row['item_id'])
         loss = Loss(row['day'], row['month'], row['year'], row['details'], wizard, item, row['recovered'], row['id'] )
         losses.append(loss)
-        print(f"🧙‍♂️ Oh Dear! {wizard.first_name} {wizard.last_name} has lost {item.colour}{item.type}{item.style}") 
+        print(f"🧙‍♂️ Oh Dear! {wizard.first_name} {wizard.last_name} HAS LOST {item.colour}{item.type}{item.style}") 
     return losses
 
+def wizard_loss_history(wizard):
+    history = []
+
+    sql = "SELECT * FROM losses where wizard_id = %s AND recovered = True"
+    values = [wizard.id]
+    results = run_sql(sql, values)
+
+    for row in results:
+        wizard = wiz_repo.select(row['wizard_id'])
+        item = item_repo.select(row['item_id'])
+        loss = Loss(row['day'], row['month'], row['year'], row['details'], wizard, item, row['recovered'], row['id'] )
+        history.append(loss)
+        print(f"🧙‍♂️ WIZARD: {wizard.first_name} {wizard.last_name} LOST ITEM: {item.colour}{item.type}{item.style} DATE: {loss.day}{loss.month}{loss.year}") 
+    return history
+
+
+    
 
 
 
-
-
-
-
-
-# def current_losses(wizard):
-# losses = []
-# For loss in losses: 
-# IF loss.wizard = wizard.id
-# AND loss.recovered = False:
-# losses.append(loss)
-# return losses
-
-# # checks wizard total loss history 
-
-# def wizard_total_losses(wizard):
-# history = []
-# for loss in history:
-# If loss.wizard = wizard.id
-# And loss.recovered = True: 
-# history.append(loss)
 
 # # checks if item is lost
 
