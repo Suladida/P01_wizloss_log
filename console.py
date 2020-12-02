@@ -66,4 +66,6 @@ loss_repo.update(loss2)
 item_repo.view_all_items(wizard2)
 loss_repo.active_losses()
 
+loss_repo.check_wizard_owns_item(wizard1, hat1)
+
 pdb.set_trace()

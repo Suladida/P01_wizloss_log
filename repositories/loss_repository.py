@@ -83,15 +83,71 @@ def active_losses():
         print(f"🧙‍♂️ Success! {item.id} {item.type} {item.colour} {item.style}") 
     return losses
 
+# checks if a wizard owns an item
 
-# def view_all_items(wizard):
-#     items = []
-#     sql = "SELECT * FROM items WHERE wizard_id = %s"
-#     values = [wizard.id]
-#     results = run_sql(sql, values)
+def check_wizard_owns_item(wizard, item):
+    # loss = None
+    sql = "SELECT * FROM losses WHERE wizard_id = %s AND item_id = %s"
+    values = [wizard.id, item.id]
+    result = run_sql(sql, values)[0]
 
-#     for row in results:
-#         item = Item(row['type'], row['colour'], row['style'], wizard, row['id'] )
-#         items.append(item)
-#     return items
+    if result is not None:
+        print(f"🧙‍♂️ Success! {wizard.first_name} {wizard.last_name} owns {item.colour} {item.type} {item.style}") 
+        return True
+    #     wizard = wiz_repo.select(result['wizard_id'])
+    #     item = item_repo.select(result['spell_id'])
+    #     loss = Loss(result['day'], result['month'], result['year'], result['details'], wizard, item, result['recovered'], result['id'] )
+    # return loss
 
+# If item.wizard = wizard.id: 
+# Return True
+# Else:
+# return False
+
+# # checks wizard current losses
+
+# def current_losses(wizard):
+# losses = []
+# For loss in losses: 
+# IF loss.wizard = wizard.id
+# AND loss.recovered = False:
+# losses.append(loss)
+# return losses
+
+# # checks wizard total loss history 
+
+# def wizard_total_losses(wizard):
+# history = []
+# for loss in history:
+# If loss.wizard = wizard.id
+# And loss.recovered = True: 
+# history.append(loss)
+
+# # checks if item is lost
+
+# def check_item_status(item):
+# For loss in losses:
+# if loss.item = item.id
+# AND loss.recovered = False:
+# return False
+# Else: 
+# return True
+
+# # marks item as recovered 
+
+# def mark_recovered(item):
+# result = check_item_status(item)
+# return result
+
+# # checks if a wizard owns an item and it's not lost (i.e. current inventory)
+
+# def wizard_inventory(wizard, item):
+# inventory = []
+# ### checks if wizard owns item
+# owned = check_wizard_owns_item(wizard, item)
+# ### checks if item is NOT lost
+# status = check_item_status(item)
+# For item in inventory:
+# If owned = true and status = true: 
+# inventory.append(item)
+# return inventory
