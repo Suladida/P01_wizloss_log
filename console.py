@@ -69,8 +69,10 @@ loss_repo.active_losses()
 loss_repo.check_wizard_owns_item(wizard1, hat1)
 loss_repo.current_losses(wizard1)
 loss_repo.loss_history(wizard2)
+loss_repo.check_item_status(wand3)
 loss_repo.check_item_status(hat1)
-loss_repo.check_item_status(hat2)
+loss_repo.mark_item_recovered(loss1)
+loss_repo.check_item_status(hat1)
 
 
 pdb.set_trace()

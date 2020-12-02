@@ -49,10 +49,10 @@ def select(id):
 # UPDATE:
 # - update function goes here
 def update(loss):
-    sql = "UPDATE casts SET (day, month, year, details, wizard_id, item_id, recovered) = (%s, %s, %s, %s, %s, %s, %s) WHERE id = %s"
+    sql = "UPDATE losses SET (day, month, year, details, wizard_id, item_id, recovered) = (%s, %s, %s, %s, %s, %s, %s) WHERE id = %s"
     values = [loss.day, loss.month, loss.year, loss.details, loss.wizard.id, loss.item.id, loss.recovered]
     run_sql(sql, values)
-    print(f"✅ Cast Updated: {loss.day} {loss.month} {loss.year} {loss.details} {loss.wizard.id} {loss.item.id} {loss.recovered}")
+    print(f"✅ Loss Updated: {loss.day} {loss.month} {loss.year} {loss.details} {loss.wizard.id} {loss.item.id} {loss.recovered}")
 
 # DELETE:
 # - delete function goes here
@@ -86,7 +86,6 @@ def active_losses():
 # checks if a wizard owns an item
 
 def check_wizard_owns_item(wizard, item):
-    # loss = None
     sql = "SELECT * FROM losses WHERE wizard_id = %s AND item_id = %s"
     values = [wizard.id, item.id]
     result = run_sql(sql, values)[0]
@@ -138,45 +137,25 @@ def check_item_status(item):
     #     print(f"🧙‍♂️ Oh Dear! {wizard.first_name} {wizard.last_name} HAS LOST {item.colour}{item.type}{item.style}") 
     # return losses
     # for item in result:
-        # if result is None:
-    #     print(f"🧙‍♂️ {item.colour} {item.type} is not lost ✅") 
-    # return True
-        # else:
-        #     print(f"🧙‍♂️ {item.colour} {item.type} is lost ⛔️") 
-        #     return False
-
+    # if result is not None:
+    #     print(f"🧙‍♂️ {item.colour} {item.type} is lost ⛔️") 
+    #     status = True
+    # else: 
     if result is None:
-        print(f"🧙‍♂️ {item.colour} {item.type} is not lost ✅") 
-        return False
-    if result is not None:
-        print(f"🧙‍♂️ {item.colour} {item.type} is lost ⛔️") 
-        return True
+        print(f"🧙‍♂️ {item.colour} {item.type} is not lost ✅")
+    return False
 
-    
+# update item as recovered
 
+def mark_item_recovered(loss):
+    sql = "UPDATE losses SET recovered = True WHERE id = %s"
+    values = [loss.id]
+    run_sql(sql, values)
+    print(f"Recovered ✅")
+    return True
+    # print(f"{item.wizard.first_name} {item.wizard.last_name}'s {item.type} has been updated to Recovered ✅")
 
-# total_items = item_repo.select_all()
-
-
-
-
-# # checks if item is lost
-
-# def check_item_status(item):
-# For loss in losses:
-# if loss.item = item.id
-# AND loss.recovered = False:
-# return False
-# Else: 
-# return True
-
-# # marks item as recovered 
-
-# def mark_recovered(item):
-# result = check_item_status(item)
-# return result
-
-# # checks if a wizard owns an item and it's not lost (i.e. current inventory)
+# checks if a wizard owns an item and it's not lost (i.e. current inventory)
 
 # def wizard_inventory(wizard, item):
 # inventory = []

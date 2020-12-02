@@ -45,7 +45,7 @@ def select(id):
 # - update function goes here
 def update(item):
     sql = "UPDATE items SET (type, colour, style, wizard_id) = (%s, %s, %s, %s) WHERE id = %s"
-    values = [item.type, item.colour, item.style, item.wizard.id]
+    values = [item.type, item.colour, item.style, item.wizard.id, item.id]
     run_sql(sql, values)
     print(f"✅ Item Updated: {item.type} {item.colour} {item.style} {item.wizard.id} {item.id}")
 
