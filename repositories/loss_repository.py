@@ -95,43 +95,6 @@ def check_wizard_owns_item(wizard, item):
         print(f"🧙‍♂️ WIZARD {wizard.first_name} {wizard.last_name} OWNS ITEM {item.colour} {item.type} {item.style}") 
         return True
 
-
-# # # checks wizard current losses
-# def current_losses(wizard):
-#     losses = []
-#     sql = "SELECT FROM losses WHERE wizard_id = %s AND recovered = %s"
-#     values = [wizard.id, False]
-#     results = run_sql(sql, values)
-
-#     for row in results:
-#         # # wizard = wiz_repo.select(row['wizard_id'])
-#         # wizard = loss.wizard.id
-#         # item = item.id
-#         item = item_repo.select(row['item_id'])
-#         loss = Loss(row['day'], row['month'], row['year'], row['details'], row['wizard'], row['item'], row['recovered'], row['id'] )
-#         # loss = Loss(row['day'], row['month'], row['year'], row['details'], wizard, item, row['recovered'], row['id'] )
-#         losses.append(loss)
-#         print(f"🧙‍♂️ Success! {item.id} {item.type} {item.colour} {item.style}") 
-#     return losses
-
-
-# def current_losses(wizard):
-#     losses = []
-#     sql = "SELECT FROM losses WHERE wizard_id = %s AND recovered = False"
-#     values = [wizard.id]
-#     results = run_sql(sql, values)
-
-#     for row in results:
-#         # wizard = wiz_repo.select(row['id'])
-#         # wizard = loss.wizard.id
-#         # item = item.id
-#         # item = item_repo.select(row['item_id'])
-#         loss = Loss(row['day'], row['month'], row['year'], row['details'], row['wizard'], row['item'], row['recovered'], row['id'] )
-#         # loss = Loss(row['day'], row['month'], row['year'], row['details'], wizard, item, row['recovered'], row['id'] )
-#         losses.append(loss)
-#         print(f"🧙‍♂️ Success! {item.id} {item.type} {item.colour} {item.style}") 
-#     return losses
-
 def current_losses(wizard):
     losses = []
 
@@ -147,10 +110,10 @@ def current_losses(wizard):
         print(f"🧙‍♂️ Oh Dear! {wizard.first_name} {wizard.last_name} HAS LOST {item.colour}{item.type}{item.style}") 
     return losses
 
-def wizard_loss_history(wizard):
-    history = []
+def loss_history(wizard):
+    losses = []
 
-    sql = "SELECT * FROM losses where wizard_id = %s AND recovered = True"
+    sql = "SELECT * FROM losses where wizard_id = %s AND recovered = False"
     values = [wizard.id]
     results = run_sql(sql, values)
 
@@ -158,12 +121,41 @@ def wizard_loss_history(wizard):
         wizard = wiz_repo.select(row['wizard_id'])
         item = item_repo.select(row['item_id'])
         loss = Loss(row['day'], row['month'], row['year'], row['details'], wizard, item, row['recovered'], row['id'] )
-        history.append(loss)
-        print(f"🧙‍♂️ WIZARD: {wizard.first_name} {wizard.last_name} LOST ITEM: {item.colour}{item.type}{item.style} DATE: {loss.day}{loss.month}{loss.year}") 
-    return history
+        losses.append(loss)
+        print(f"🧙‍♂️⛔️⏳ {loss.day} / {loss.month} / {loss.year} - WIZARD: {wizard.first_name} {wizard.last_name} - LOST: {item.colour} {item.type} {item.style}") 
+    return losses
 
+def check_item_status(item):
+    sql = "SELECT * FROM losses WHERE item_id = %s AND recovered = False"
+    values = [item.id]
+    result = run_sql(sql, values)
+
+    # for row in results:
+    #     wizard = wiz_repo.select(row['wizard_id'])
+    #     item = item_repo.select(row['item_id'])
+    #     loss = Loss(row['day'], row['month'], row['year'], row['details'], wizard, item, row['recovered'], row['id'] )
+    #     losses.append(loss)
+    #     print(f"🧙‍♂️ Oh Dear! {wizard.first_name} {wizard.last_name} HAS LOST {item.colour}{item.type}{item.style}") 
+    # return losses
+    # for item in result:
+        # if result is None:
+    #     print(f"🧙‍♂️ {item.colour} {item.type} is not lost ✅") 
+    # return True
+        # else:
+        #     print(f"🧙‍♂️ {item.colour} {item.type} is lost ⛔️") 
+        #     return False
+
+    if result is None:
+        print(f"🧙‍♂️ {item.colour} {item.type} is not lost ✅") 
+        return False
+    if result is not None:
+        print(f"🧙‍♂️ {item.colour} {item.type} is lost ⛔️") 
+        return True
 
     
+
+
+# total_items = item_repo.select_all()
 
 
 
