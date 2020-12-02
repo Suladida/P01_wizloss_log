@@ -61,3 +61,17 @@ def delete(id):
 def delete_all():
     sql = "DELETE FROM items"
     run_sql(sql)
+
+# View all items a wizard owns
+
+def view_all_items(wizard):
+    items = []
+    sql = "SELECT * FROM items WHERE wizard_id = %s"
+    values = [wizard.id]
+    results = run_sql(sql, values)
+
+    for row in results:
+        item = Item(row['type'], row['colour'], row['style'], wizard, row['id'] )
+        items.append(item)
+        print("🧙‍♂️ Success!")
+    return items
