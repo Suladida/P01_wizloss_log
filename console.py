@@ -46,18 +46,26 @@ loss_repo.save(loss3)
 loss4 = Loss("03", "07", "2019", "No memory of loss", wizard1, shoes1)
 loss_repo.save(loss4)
 
-wizards = wiz_repo.select_all()
-items = item_repo.select_all()
-losses = loss_repo.select_all()
+# wizards = wiz_repo.select_all()
+# items = item_repo.select_all()
+# losses = loss_repo.select_all()
 
 # Test Update Wizard Here (Change Age)
 wizard_update = Wizard("Gandalferoo", "Frillywhiskers", 3000, wizard1.id)
 wiz_repo.update(wizard_update)
 
+# item_repo.select(wand1.id)
+print(wand1.colour)
+
 # Test Update Item Here (Change Colour)
-wand_update = Item("Wand", "Medium Brown", "Knobbly", wizard1)
+wand_update = Item("Wand", "Medium Brown", "Knobbly", wand1.id)
 item_repo.update(wand_update)
 
+# item_repo.update(item_update, wizard_update)
+
+print(wand1.colour)
+
+loss_repo.check_item_status(hat2)
 
 # Test Update Loss Here (Change Recovered)
 loss2 = Loss("04","03","2019", "Lost in forest (forest name unknown)", wizard2, hat2, True)
@@ -69,10 +77,10 @@ loss_repo.active_losses()
 loss_repo.check_wizard_owns_item(wizard1, hat1)
 loss_repo.current_losses(wizard1)
 loss_repo.loss_history(wizard2)
-loss_repo.check_item_status(wand3)
-loss_repo.check_item_status(hat1)
-loss_repo.mark_item_recovered(loss1)
-loss_repo.check_item_status(hat1)
+# loss_repo.mark_item_recovered(loss1)
+loss_repo.check_item_status(hat2)
 
 
 pdb.set_trace()
+
+#BRANCH TEST

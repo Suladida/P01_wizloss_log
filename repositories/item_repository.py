@@ -44,10 +44,18 @@ def select(id):
 # UPDATE:
 # - update function goes here
 def update(item):
-    sql = "UPDATE items SET (type, colour, style, wizard_id) = (%s, %s, %s, %s) WHERE id = %s"
-    values = [item.type, item.colour, item.style, item.wizard.id, item.id]
+    sql = "UPDATE items SET (type, colour, style) = (%s, %s, %s) WHERE id = %s"
+    values = [item.type, item.colour, item.style, item.id]
     run_sql(sql, values)
-    print(f"✅ Item Updated: {item.type} {item.colour} {item.style} {item.wizard.id} {item.id}")
+    print(f"🦞🦞🦞🦞🦞🦞🦞🦞🦞🦞🦞🦞🦞✅ Item Updated: {item.type} {item.colour} {item.style} {item.id}")
+
+# def update(item, wizard):
+#     item = item_repo.select(item.id)
+#     sql = "UPDATE items SET (type, colour, style) = (%s, %s, %s) WHERE id = %s AND wizard_id = %s"
+#     values = [item.type, item.colour, item.style, item.id, wizard.id]
+#     run_sql(sql, values)
+#     print(f"🦞🦞🦞🦞🦞🦞🦞🦞🦞🦞🦞🦞🦞✅ Item Updated: {item.type} {item.colour} {item.style} {item.wizard} {item.wizard_id}")
+
 
 # DELETE:
 # - delete function goes here
@@ -75,4 +83,3 @@ def view_all_items(wizard):
         items.append(item)
         print("🧙‍♂️ Success!")
     return items
-
