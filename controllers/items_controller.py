@@ -15,8 +15,8 @@ def home():
 def new():
     return render_template('items/new.html')
 
-@items_blueprint.route('/items/edit', methods=['POST'])
-def edit_item():
+@items_blueprint.route('/items/<id>', methods=['POST'])
+def edit_item(id):
     item_type = request.form['type']
     item_colour = request.form['colour']
     item_style = request.form['style']

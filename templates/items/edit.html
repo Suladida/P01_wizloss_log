@@ -2,7 +2,7 @@
 
 {% block content %}
 <h1>Update Item Info:</h1>
-<form action="/items/edit" method="post">
+<form action="/items/{{item.id}}" method="post">
 
     <label for="type">Type:</label>
     <input type="text" name="type" id="type" value="{{item.type}}" required autofocus>
@@ -12,7 +12,7 @@
 
     <label for="style">Style:</label>
     <input type="text" name="style" id="style" value="{{item.style}}" required>
-    
+
     <input hidden type ="text" name="wizard_id" value="{{wizard}}">
     <input hidden type="text" name="item" id="item" value="{{item.id}}" required>
 
