@@ -64,5 +64,6 @@ loss2 = Loss("04","03","2019", "Lost in forest (forest name unknown)", wizard2, 
 loss_repo.update(loss2)
 
 item_repo.view_all_items(wizard2)
+loss_repo.active_losses()
 
 pdb.set_trace()

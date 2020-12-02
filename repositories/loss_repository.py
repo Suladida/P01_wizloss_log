@@ -66,3 +66,32 @@ def delete(id):
 def delete_all():
     sql = "DELETE FROM losses"
     run_sql(sql)
+
+# READ_ALL:
+# select_all function goes here
+def active_losses():
+    losses = []
+
+    sql = "SELECT * FROM losses where recovered = False"
+    results = run_sql(sql)
+
+    for row in results:
+        wizard = wiz_repo.select(row['wizard_id'])
+        item = item_repo.select(row['item_id'])
+        loss = Loss(row['day'], row['month'], row['year'], row['details'], wizard, item, row['recovered'], row['id'] )
+        losses.append(loss)
+        print(f"🧙‍♂️ Success! {item.id} {item.type} {item.colour} {item.style}") 
+    return losses
+
+
+# def view_all_items(wizard):
+#     items = []
+#     sql = "SELECT * FROM items WHERE wizard_id = %s"
+#     values = [wizard.id]
+#     results = run_sql(sql, values)
+
+#     for row in results:
+#         item = Item(row['type'], row['colour'], row['style'], wizard, row['id'] )
+#         items.append(item)
+#     return items
+

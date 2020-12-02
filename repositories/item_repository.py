@@ -75,3 +75,4 @@ def view_all_items(wizard):
         items.append(item)
         print("🧙‍♂️ Success!")
     return items
+
