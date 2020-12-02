@@ -51,30 +51,29 @@ loss_repo.save(loss4)
 # losses = loss_repo.select_all()
 
 # Test Update Wizard Here (Change Age)
-wizard_update = Wizard("Gandalferoo", "Frillywhiskers", 3000, wizard1.id)
-wiz_repo.update(wizard_update)
+wizard1.age = 50000
+wiz_repo.update(wizard1)
 
-# item_repo.select(wand1.id)
-print(wand1.colour)
-
-# Test Update Item Here (Change Colour)
-wand_update = Item("Wand", "Medium Brown", "Knobbly", wand1.id)
-item_repo.update(wand_update)
-
-# item_repo.update(item_update, wizard_update)
-
-print(wand1.colour)
+# Check colour before
+print(f"🧪🧪🧪{wand1.colour}")
+# say what the item is
+# say what the updates are
+wand1.colour = "Medium Brown"
+# pass both to function 
+item_repo.update(wand1)
+# Check colour after
+print(f"🧪🧪🧪{wand1.colour}")
 
 loss_repo.check_item_status(hat2)
 
 # Test Update Loss Here (Change Recovered)
-loss2 = Loss("04","03","2019", "Lost in forest (forest name unknown)", wizard2, hat2, True)
+loss2.recovered = True
 loss_repo.update(loss2)
 
 item_repo.view_all_items(wizard2)
 loss_repo.active_losses()
 
-loss_repo.check_wizard_owns_item(wizard1, hat1)
+# item_repo.check_wizard_owns_item(wizard1, hat1)
 loss_repo.current_losses(wizard1)
 loss_repo.loss_history(wizard2)
 # loss_repo.mark_item_recovered(loss1)

@@ -29,6 +29,7 @@ def select_all():
 # READ:
 # select function goes here
 def select(id):
+    print(f"⛰⛰⛰⛰⛰⛰{id}")
     wizard = None
     sql = "SELECT * FROM wizards WHERE id = %s"
     values = [id]

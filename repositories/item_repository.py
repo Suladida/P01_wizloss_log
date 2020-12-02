@@ -41,22 +41,6 @@ def select(id):
         item = Item(result['type'], result['colour'], result['style'], wizard, result['id'] )
     return item
 
-# UPDATE:
-# - update function goes here
-def update(item):
-    sql = "UPDATE items SET (type, colour, style) = (%s, %s, %s) WHERE id = %s"
-    values = [item.type, item.colour, item.style, item.id]
-    run_sql(sql, values)
-    print(f"🦞🦞🦞🦞🦞🦞🦞🦞🦞🦞🦞🦞🦞✅ Item Updated: {item.type} {item.colour} {item.style} {item.id}")
-
-# def update(item, wizard):
-#     item = item_repo.select(item.id)
-#     sql = "UPDATE items SET (type, colour, style) = (%s, %s, %s) WHERE id = %s AND wizard_id = %s"
-#     values = [item.type, item.colour, item.style, item.id, wizard.id]
-#     run_sql(sql, values)
-#     print(f"🦞🦞🦞🦞🦞🦞🦞🦞🦞🦞🦞🦞🦞✅ Item Updated: {item.type} {item.colour} {item.style} {item.wizard} {item.wizard_id}")
-
-
 # DELETE:
 # - delete function goes here
 def delete(id):
@@ -83,3 +67,31 @@ def view_all_items(wizard):
         items.append(item)
         print("🧙‍♂️ Success!")
     return items
+
+# checks if a wizard owns an item
+
+def check_wizard_owns_item(wizard, item):
+    sql = "SELECT * FROM losses WHERE wizard_id = %s AND item_id = %s"
+    values = [wizard, item]
+    result = run_sql(sql, values)[0]
+
+    if result is not None:
+        print(f"🧙‍♂️ WIZARD {wizard.first_name} {wizard.last_name} OWNS ITEM {item.colour} {item.type} {item.style}") 
+        return True
+
+# UPDATE:
+# - update function goes here
+def update(update_values):
+    sql = "UPDATE items SET (type, colour, style) = (%s, %s, %s) WHERE id = %s"
+    values = [update_values.type, update_values.colour, update_values.style, update_values.id]
+    run_sql(sql, values)
+    print(f"🦞🦞🦞🦞🦞🦞🦞🦞🦞🦞🦞🦞🦞✅ Item Updated: {update_values.type} {update_values.colour} {update_values.style} {update_values.id}")
+
+
+# def update(item, wizard):
+#     item = item_repo.select(item.id)
+#     sql = "UPDATE items SET (type, colour, style) = (%s, %s, %s) WHERE id = %s AND wizard_id = %s"
+#     values = [item.type, item.colour, item.style, item.id, wizard.id]
+#     run_sql(sql, values)
+#     print(f"🦞🦞🦞🦞🦞🦞🦞🦞🦞🦞🦞🦞🦞✅ Item Updated: {item.type} {item.colour} {item.style} {item.wizard} {item.wizard_id}")
+

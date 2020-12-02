@@ -6,7 +6,7 @@
     {% for item in items %}
     <div>
         <br>
-        {{ item.type }} {{ item.colour}} {{item.style}} {{item.wizard}}</b>
+        {{ item.type }} {{ item.colour}} {{item.style}} {{item.wizard.first_name}}</b>
         <a href="/items/{{item.id}}/edit">Edit</a>
       </p>
     </div>

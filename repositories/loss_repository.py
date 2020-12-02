@@ -50,7 +50,8 @@ def select(id):
 # - update function goes here
 def update(loss):
     sql = "UPDATE losses SET (day, month, year, details, wizard_id, item_id, recovered) = (%s, %s, %s, %s, %s, %s, %s) WHERE id = %s"
-    values = [loss.day, loss.month, loss.year, loss.details, loss.wizard.id, loss.item.id, loss.recovered]
+    values = [loss.day, loss.month, loss.year, loss.details, loss.wizard.id, loss.item.id, loss.recovered, loss.id]
+    print("Hey")
     run_sql(sql, values)
     print(f"✅ Loss {loss.item.id} Updated: {loss.item.type} {loss.day} {loss.month} {loss.year} {loss.details} {loss.wizard.id} {loss.item.id} {loss.recovered}")
 
@@ -82,17 +83,6 @@ def active_losses():
         losses.append(loss)
         print(f"🧙‍♂️ Success! {item.id} {item.type} {item.colour} {item.style}") 
     return losses
-
-# checks if a wizard owns an item
-
-def check_wizard_owns_item(wizard, item):
-    sql = "SELECT * FROM losses WHERE wizard_id = %s AND item_id = %s"
-    values = [wizard.id, item.id]
-    result = run_sql(sql, values)[0]
-
-    if result is not None:
-        print(f"🧙‍♂️ WIZARD {wizard.first_name} {wizard.last_name} OWNS ITEM {item.colour} {item.type} {item.style}") 
-        return True
 
 def current_losses(wizard):
     losses = []

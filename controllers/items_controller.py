@@ -15,9 +15,18 @@ def home():
 def new():
     return render_template('items/new.html')
 
-@items_blueprint.route('/edit')
-def edit():
-    return render_template('items/edit.html')
+@items_blueprint.route('/items/edit', methods=['POST'])
+def edit_item():
+    item_type = request.form['type']
+    item_colour = request.form['colour']
+    item_style = request.form['style']
+    wizard_id = request.form['wizard_id']
+    item_id = request.form['item']
+    item_wizard = wiz_repo.select(wizard_id)
+    newItem = Item(type = item_type, colour = item_colour, style = item_style, wizard = item_wizard, id = item_id)
+    item_repo.save(newItem)
+    items = item_repo.select_all()
+    return render_template('items/items.html', title='Home', items=items)
 
 @items_blueprint.route('/items', methods=['POST'])
 def add_item():
@@ -32,7 +41,7 @@ def add_item():
     return render_template('items/items.html', title='Home', items=items)
 
 @items_blueprint.route("/items/<id>/edit", methods=['GET'])
-def edit_item(id):
+def edit_item_view(id):
     item = item_repo.select(id)
     wizard = item.wizard.id
     return render_template('items/edit.html', item = item, wizard=wizard)
