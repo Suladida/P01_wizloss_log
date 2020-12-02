@@ -7,8 +7,9 @@
         {% for wizard in wizards %}
         <div>
           <p>
-            <a href="/wizards/{{wizard.id}}">Edit</a>
-            <u>Name</u>: {{ wizard.first_name }} {{ wizard.last_name }} <u>Age</u>: {{wizard.age}} </b>
+            <a href="/wizards/{{wizard.id}}">Edit</a><br>
+            NAME: {{ wizard.first_name }} {{ wizard.last_name }} <br>
+            AGE: {{wizard.age}} </b>
           </p>
         </div>
         {% endfor %}
